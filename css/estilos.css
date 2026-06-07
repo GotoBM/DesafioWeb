@@ -1,4 +1,4 @@
-/* Variables de color */
+/* ===== VARIABLES DE COLOR ===== */
 :root {
   --bg: #0f1724;
   --card: #1e2530;
@@ -7,19 +7,22 @@
   --text-muted: #8b949e;
 }
 
-/* Reset básico */
+/* ===== RESET ===== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* ===== BODY ===== */
 body {
   font-family: sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
 }
+
+/* ===== ACCESIBILIDAD ===== */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -28,6 +31,8 @@ body {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+
+/* ===== HEADER ===== */
 header {
   background: #161b22;
   border-bottom: 2px solid #30363d;
@@ -36,6 +41,9 @@ header {
   align-items: center;
   gap: 24px;
   flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 h1 {
@@ -56,12 +64,15 @@ input {
   color: var(--text);
   font-size: 15px;
 }
+
+/* ===== MAIN ===== */
 main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px 24px;
 }
 
+/* ===== BOTONES ===== */
 button {
   padding: 12px 28px;
   background: var(--acc);
@@ -79,55 +90,20 @@ button:hover {
   color: #fff;
 }
 
-/* La cuadrícula de tarjetas */
-#galeria {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-}
-.tarjeta {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 20px 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  transition: transform 0.2s;
-}
-
-.tarjeta:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
-}
-
-.tarjeta img {
-  width: 110px;
-  height: 110px;
-  object-fit: contain;
-}
-
-.tarjeta h3 {
-  font-size: 14px;
-  text-transform: capitalize;
-  text-align: center;
-}
 button:focus-visible,
 input:focus-visible {
   outline: 3px solid var(--acc);
   outline-offset: 3px;
 }
-@media (max-width: 600px) {
-  #galeria {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* ===== GALERÍA ===== */
+#galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
 }
-/* Animación de entrada */
+
+/* ===== ANIMACIÓN DE ENTRADA ===== */
 @keyframes aparecer {
   from {
     opacity: 0;
@@ -139,9 +115,65 @@ input:focus-visible {
   }
 }
 
+/* ===== TARJETAS ===== */
 .tarjeta {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   animation: aparecer 0.4s ease both;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
+
+.tarjeta:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.tarjeta img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.tarjeta:hover img {
+  transform: scale(1.1) translateY(-4px);
+}
+
+.tarjeta h3 {
+  font-size: 14px;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+/* ===== FAVORITOS ===== */
+.btn-fav {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 4px;
+  margin-bottom: 0;
+}
+
+.btn-fav:hover {
+  transform: scale(1.3);
+  background: none;
+  color: inherit;
+}
+
+.tarjeta.favorito {
+  border: 2px solid #f94144;
+  box-shadow: 0 0 12px rgba(249, 65, 68, 0.4);
+}
+
+/* ===== MODO CLARO ===== */
 body.modo-claro {
   --bg: #f0f4f8;
   --card: #ffffff;
@@ -158,21 +190,20 @@ body.modo-claro footer {
   background: #ffffff;
   border-top-color: #e2e8f0;
 }
-/* Botón favorito */
-.btn-fav {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  transition: transform 0.2s;
-  padding: 4px;
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 600px) {
+  #galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
-.btn-fav:hover {
-  transform: scale(1.3);
-}
-
-.tarjeta.favorito {
-  border: 2px solid #f94144;
-  box-shadow: 0 0 12px rgba(249, 65, 68, 0.4);
+#cargar-mas {
+  display: block;
+  margin: 24px auto 0 auto;
 }
