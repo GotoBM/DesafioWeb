@@ -40,12 +40,17 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .header-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .header-nav {
@@ -53,12 +58,13 @@ header {
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 12px;
+  margin-top: 12;
 }
 
 h1 {
   font-size: 22px;
   color: var(--acc);
+  white-space: nowrap;
 }
 
 label {
@@ -92,7 +98,7 @@ button {
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 button:hover {
@@ -108,14 +114,12 @@ input:focus-visible {
 
 /* ===== BOTONES ESPECÍFICOS DEL HEADER ===== */
 #cargar {
-  margin-bottom: 0;
   white-space: nowrap;
 }
 
 #toggle-tema {
   background: var(--acc);
   color: #0d1117;
-  margin-bottom: 0;
   white-space: nowrap;
 }
 
@@ -127,7 +131,6 @@ input:focus-visible {
 #btn-ver-favoritos {
   background: #f94144;
   color: #fff;
-  margin-bottom: 0;
   white-space: nowrap;
 }
 
@@ -139,7 +142,6 @@ input:focus-visible {
 #btn-toggle-resena {
   background: #6930c3;
   color: #fff;
-  margin-bottom: 0;
   white-space: nowrap;
 }
 
@@ -157,7 +159,6 @@ input:focus-visible {
   font-size: 20px;
   padding: 6px 12px;
   border-radius: 8px;
-  margin-bottom: 0;
   cursor: pointer;
 }
 
@@ -235,7 +236,6 @@ input:focus-visible {
   cursor: pointer;
   transition: transform 0.2s;
   padding: 4px;
-  margin-bottom: 0;
 }
 
 .btn-fav:hover {
@@ -257,7 +257,6 @@ input:focus-visible {
 #btn-regiones {
   background: #2563eb;
   color: #fff;
-  margin-bottom: 0;
   white-space: nowrap;
 }
 
@@ -336,7 +335,6 @@ input:focus-visible {
 
 #btn-enviar {
   width: fit-content;
-  margin-bottom: 0;
 }
 
 #post-respuesta {
@@ -460,6 +458,16 @@ body.modo-claro #modal-cerrar {
 /* ===== RESPONSIVO MÓVIL ===== */
 @media (max-width: 768px) {
 
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .header-top {
+    justify-content: space-between;
+  }
+
   #btn-hamburguesa {
     display: block;
   }
@@ -481,7 +489,6 @@ body.modo-claro #modal-cerrar {
   .menu-regiones,
   .menu-regiones button {
     width: 100%;
-    margin-bottom: 0;
   }
 
   #lista-regiones {
