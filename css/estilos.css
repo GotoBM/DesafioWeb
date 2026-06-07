@@ -203,7 +203,27 @@ body.modo-claro footer {
   }
 }
 
+/* ===== BOTÓN CARGAR MÁS ===== */
 #cargar-mas {
   display: block;
   margin: 24px auto 0 auto;
+}
+
+/* Botón modo claro/oscuro */
+#toggle-tema {
+  background: var(--acc);
+  color: #0d1117;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+#toggle-tema:hover {
+  background: #f94144;
+  color: #fff;
+}
+
+/* Botón cargar del header */
+#cargar {
+  margin-bottom: 0;
+  white-space: nowrap;
 }
