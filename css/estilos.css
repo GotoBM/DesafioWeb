@@ -36,14 +36,24 @@ body {
 header {
   background: #161b22;
   border-bottom: 2px solid #30363d;
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  padding: 16px 24px;
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
 }
 
 h1 {
@@ -72,7 +82,7 @@ main {
   padding: 32px 24px;
 }
 
-/* ===== BOTONES ===== */
+/* ===== BOTONES (base) ===== */
 button {
   padding: 12px 28px;
   background: var(--acc);
@@ -96,11 +106,77 @@ input:focus-visible {
   outline-offset: 3px;
 }
 
+/* ===== BOTONES ESPECÍFICOS DEL HEADER ===== */
+#cargar {
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+#toggle-tema {
+  background: var(--acc);
+  color: #0d1117;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+#toggle-tema:hover {
+  background: #f94144;
+  color: #fff;
+}
+
+#btn-ver-favoritos {
+  background: #f94144;
+  color: #fff;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+#btn-ver-favoritos:hover {
+  background: #d00000;
+  color: #fff;
+}
+
+#btn-toggle-resena {
+  background: #6930c3;
+  color: #fff;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+#btn-toggle-resena:hover {
+  background: #5a189a;
+  color: #fff;
+}
+
+/* ===== BOTÓN HAMBURGUESA ===== */
+#btn-hamburguesa {
+  display: none;
+  background: none;
+  border: 2px solid #30363d;
+  color: var(--text);
+  font-size: 20px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+#btn-hamburguesa:hover {
+  background: #30363d;
+  color: var(--text);
+}
+
 /* ===== GALERÍA ===== */
 #galeria {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 20px;
+}
+
+/* ===== BOTÓN CARGAR MÁS ===== */
+#cargar-mas {
+  display: block;
+  margin: 24px auto 0 auto;
 }
 
 /* ===== ANIMACIÓN DE ENTRADA ===== */
@@ -173,149 +249,6 @@ input:focus-visible {
   box-shadow: 0 0 12px rgba(249, 65, 68, 0.4);
 }
 
-/* ===== MODO CLARO ===== */
-body.modo-claro {
-  --bg: #f0f4f8;
-  --card: #ffffff;
-  --text: #1a202c;
-  --text-muted: #4a5568;
-}
-
-body.modo-claro header {
-  background: #ffffff;
-  border-bottom-color: #e2e8f0;
-}
-
-body.modo-claro footer {
-  background: #ffffff;
-  border-top-color: #e2e8f0;
-}
-
-/* ===== RESPONSIVO ===== */
-@media (max-width: 600px) {
-  #galeria {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* ===== BOTÓN CARGAR MÁS ===== */
-#cargar-mas {
-  display: block;
-  margin: 24px auto 0 auto;
-}
-
-/* Botón modo claro/oscuro */
-#toggle-tema {
-  background: var(--acc);
-  color: #0d1117;
-  margin-bottom: 0;
-  white-space: nowrap;
-}
-
-#toggle-tema:hover {
-  background: #f94144;
-  color: #fff;
-}
-
-/* Botón cargar del header */
-#cargar {
-  margin-bottom: 0;
-  white-space: nowrap;
-}
-
-/* ===== SECCIÓN POST ===== */
-#seccion-post {
-  margin-top: 48px;
-  border-top: 2px solid #30363d;
-  padding-top: 32px;
-}
-
-#seccion-post h2 {
-  font-size: 18px;
-  color: var(--acc);
-  margin-bottom: 20px;
-}
-
-.form-post {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 480px;
-}
-
-.form-post input {
-  width: 100%;
-  border-radius: 12px;
-}
-
-#btn-enviar {
-  width: fit-content;
-  margin-bottom: 0;
-}
-
-#post-respuesta {
-  font-size: 14px;
-  color: #52b788;
-  min-height: 20px;
-  font-style: italic;
-}
-
-/* ===== BOTÓN RESEÑA EN HEADER ===== */
-#btn-toggle-resena {
-  background: #6930c3;
-  color: #fff;
-  margin-bottom: 0;
-  white-space: nowrap;
-}
-
-#btn-toggle-resena:hover {
-  background: #5a189a;
-  color: #fff;
-}
-
-/* ===== SECCIÓN POST ===== */
-#seccion-post {
-  margin-top: 48px;
-  border-top: 2px solid #30363d;
-  padding-top: 32px;
-  animation: aparecer 0.3s ease both;
-}
-
-#seccion-post h2 {
-  font-size: 18px;
-  color: var(--acc);
-  margin-bottom: 20px;
-}
-
-.form-post {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 480px;
-}
-
-.form-post input {
-  width: 100%;
-  border-radius: 12px;
-}
-
-#btn-enviar {
-  width: fit-content;
-  margin-bottom: 0;
-}
-
-#post-respuesta {
-  font-size: 14px;
-  color: #52b788;
-  min-height: 20px;
-  font-style: italic;
-}
-
 /* ===== MENÚ REGIONES ===== */
 .menu-regiones {
   position: relative;
@@ -375,16 +308,42 @@ body.modo-claro footer {
   color: #0d1117;
 }
 
-#btn-ver-favoritos {
-  background: #f94144;
-  color: #fff;
-  margin-bottom: 0;
-  white-space: nowrap;
+/* ===== SECCIÓN POST ===== */
+#seccion-post {
+  margin-top: 48px;
+  border-top: 2px solid #30363d;
+  padding-top: 32px;
+  animation: aparecer 0.3s ease both;
 }
 
-#btn-ver-favoritos:hover {
-  background: #d00000;
-  color: #fff;
+#seccion-post h2 {
+  font-size: 18px;
+  color: var(--acc);
+  margin-bottom: 20px;
+}
+
+.form-post {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 480px;
+}
+
+.form-post input {
+  width: 100%;
+  border-radius: 12px;
+}
+
+#btn-enviar {
+  width: fit-content;
+  margin-bottom: 0;
+}
+
+#post-respuesta {
+  font-size: 14px;
+  color: #52b788;
+  min-height: 20px;
+  font-style: italic;
 }
 
 /* ===== MODAL ===== */
@@ -470,7 +429,24 @@ body.modo-claro footer {
   margin-top: 4px;
 }
 
-/* Modo claro para el modal */
+/* ===== MODO CLARO ===== */
+body.modo-claro {
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1a202c;
+  --text-muted: #4a5568;
+}
+
+body.modo-claro header {
+  background: #ffffff;
+  border-bottom-color: #e2e8f0;
+}
+
+body.modo-claro footer {
+  background: #ffffff;
+  border-top-color: #e2e8f0;
+}
+
 body.modo-claro #modal {
   background: #ffffff;
   border-color: #e2e8f0;
@@ -479,4 +455,52 @@ body.modo-claro #modal {
 body.modo-claro #modal-cerrar {
   background: #e2e8f0;
   color: #1a202c;
+}
+
+/* ===== RESPONSIVO MÓVIL ===== */
+@media (max-width: 768px) {
+
+  #btn-hamburguesa {
+    display: block;
+  }
+
+  .header-nav {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 12px;
+    gap: 8px;
+  }
+
+  .header-nav.abierto {
+    display: flex;
+  }
+
+  .header-nav button,
+  .header-nav input,
+  .menu-regiones,
+  .menu-regiones button {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  #lista-regiones {
+    width: 100%;
+    position: static;
+    margin-top: 4px;
+  }
+
+  #galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #modal {
+    padding: 24px 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  #galeria {
+    grid-template-columns: 1fr;
+  }
 }

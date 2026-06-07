@@ -20,10 +20,11 @@ const postCuerpo = document.getElementById("post-cuerpo");
 const postRespuesta = document.getElementById("post-respuesta");
 const btnRegiones = document.getElementById("btn-regiones");
 const listaRegiones = document.getElementById("lista-regiones");
-
 const modalOverlay = document.getElementById("modal-overlay");
 const modalContenido = document.getElementById("modal-contenido");
 const modalCerrar = document.getElementById("modal-cerrar");
+const btnHamburguesa = document.getElementById("btn-hamburguesa");
+const headerNav      = document.getElementById("header-nav");
 
 // ===== MODO OSCURO / CLARO =====
 btnTema.addEventListener("click", () => {
@@ -542,6 +543,21 @@ document.addEventListener("keydown", (e) => {
 
   if (e.key === "Escape") {
     modalOverlay.classList.remove("abierto");
+  }
+});
+
+// ===== MENÚ HAMBURGUESA =====
+btnHamburguesa.addEventListener("click", (e) => {
+  e.stopPropagation();
+  headerNav.classList.toggle("abierto");
+  btnHamburguesa.textContent = headerNav.classList.contains("abierto") ? "✖" : "☰";
+});
+
+// Cerrar menú hamburguesa al hacer clic fuera
+document.addEventListener("click", (e) => {
+  if (!e.target.closest("header")) {
+    headerNav.classList.remove("abierto");
+    btnHamburguesa.textContent = "☰";
   }
 });
 
