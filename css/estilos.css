@@ -315,3 +315,74 @@ body.modo-claro footer {
   min-height: 20px;
   font-style: italic;
 }
+
+/* ===== MENÚ REGIONES ===== */
+.menu-regiones {
+  position: relative;
+}
+
+#btn-regiones {
+  background: #2563eb;
+  color: #fff;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+#btn-regiones:hover {
+  background: #1d4ed8;
+  color: #fff;
+}
+
+#lista-regiones {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #1e2530;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  list-style: none;
+  overflow: hidden;
+  z-index: 200;
+  min-width: 200px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+#lista-regiones.abierto {
+  display: block;
+}
+
+#lista-regiones li {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s;
+  border-bottom: 1px solid #30363d;
+}
+
+#lista-regiones li:last-child {
+  border-bottom: none;
+}
+
+#lista-regiones li:hover {
+  background: #2563eb;
+  color: #fff;
+}
+
+#lista-regiones li.activa {
+  background: var(--acc);
+  color: #0d1117;
+}
+
+#btn-ver-favoritos {
+  background: #f94144;
+  color: #fff;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+#btn-ver-favoritos:hover {
+  background: #d00000;
+  color: #fff;
+}
