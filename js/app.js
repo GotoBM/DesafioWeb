@@ -148,21 +148,96 @@ function crearTarjeta(pokemon) {
 }
 
 // ===== BUSCADOR =====
+// ===== BUSCADOR =====
+let buscarTimeout = null;
+
 inputBuscar.addEventListener("input", () => {
-  const query = inputBuscar.value
-    .trim()
-    .toLowerCase();
+  const query = inputBuscar.value.trim().toLowerCase();
 
-  galeria.querySelectorAll(".tarjeta").forEach(card => {
-    const nombre = card.dataset.nombre || "";
-    const esFavorito = favoritos.has(nombre);
-
-    if (esFavorito || nombre.includes(query)) {
+  // Si está vacío, volver a la vista normal
+  if (!query) {
+    galeria.querySelectorAll(".tarjeta").forEach(card => {
       card.style.display = "";
-    } else {
-      card.style.display = "none";
+    });
+    return;
+  }
+
+  // Esperar 400ms antes de buscar (evita buscar en cada tecla)
+  clearTimeout(buscarTimeout);
+  buscarTimeout = setTimeout(async () => {
+
+    galeria.innerHTML = "<p>Buscando...</p>";
+
+    try {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
+
+      // Si encontró el pokémon exacto
+      if (res.ok) {
+        const poke = await res.json();
+        galeria.innerHTML = "";
+
+        // Mostrar favoritos primero
+        favoritos.forEach(nombre => {
+          if (datosFavoritos.has(nombre)) {
+            const card = crearTarjeta(datosFavoritos.get(nombre));
+            if (card) galeria.appendChild(card);
+          }
+        });
+
+        // Agregar el resultado si no es ya un favorito
+        if (!favoritos.has(poke.name)) {
+          const card = crearTarjeta(poke);
+          if (card) galeria.appendChild(card);
+        }
+
+      } else {
+        // Si no encontró exacto, buscar por nombre parcial en la lista completa
+        const resList = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1025`);
+        const dataList = await resList.json();
+
+        const coincidencias = dataList.results.filter(p =>
+          p.name.includes(query)
+        );
+
+        if (coincidencias.length === 0) {
+          galeria.innerHTML = "<p>No se encontraron pokémon con ese nombre.</p>";
+          return;
+        }
+
+        // Traer detalles de los primeros 20 coincidentes
+        const promesas = coincidencias.slice(0, 20).map(item =>
+          fetch(item.url)
+            .then(r => r.ok ? r.json() : null)
+            .catch(() => null)
+        );
+
+        const pokemones = await Promise.all(promesas);
+
+        galeria.innerHTML = "";
+
+        // Favoritos primero
+        favoritos.forEach(nombre => {
+          if (datosFavoritos.has(nombre) && nombre.includes(query)) {
+            const card = crearTarjeta(datosFavoritos.get(nombre));
+            if (card) galeria.appendChild(card);
+          }
+        });
+
+        // Resto de resultados
+        pokemones.forEach(poke => {
+          if (!poke) return;
+          if (favoritos.has(poke.name)) return; // ya está arriba
+          const card = crearTarjeta(poke);
+          if (card) galeria.appendChild(card);
+        });
+      }
+
+    } catch (error) {
+      galeria.innerHTML = "<p>Error al buscar. Intenta de nuevo.</p>";
+      console.error(error);
     }
-  });
+
+  }, 400);
 });
 
 // ===== CARGAR DATOS =====
