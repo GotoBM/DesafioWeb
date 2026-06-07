@@ -10,21 +10,37 @@
 
     <header>
         <h1>Galeria pokemon</h1>
-
+        <!--<label for="buscar">Buscar</label>-->
         <input type="text" id="buscar" placeholder="Buscar pokemon...">
         <button id="cargar">Cargar Pokemon</button>
         <button id="toggle-tema">🌙 Modo claro</button>
+        <button id="btn-toggle-resena">📝 Dejar reseña</button>
     </header>
 
-    <main> 
+    <main>
         <section id="galeria">
-            <h2 class="sr-only">resultados</h2>
+            <h2 class="sr-only">Resultados</h2>
         </section>
         <button id="cargar-mas" style="display:none">Cargar más</button>
+
+        <!-- Segundo endpoint: POST (oculto por defecto) -->
+        <section id="seccion-post" style="display:none">
+            <h2>Deja una reseña</h2>
+            <div class="form-post">
+                <label for="post-titulo">Título</label>
+                <input type="text" id="post-titulo" placeholder="ej: Me encantó Pikachu">
+
+                <label for="post-cuerpo">Comentario</label>
+                <input type="text" id="post-cuerpo" placeholder="Escribe tu comentario...">
+
+                <button id="btn-enviar">📨 Enviar reseña</button>
+                <p id="post-respuesta" aria-live="polite"></p>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p></p>
+         <!-- <p>Datos de <a href="https://pokeapi.co" target="_blank" rel="noopener">PokéAPI</a></p> -->
     </footer>
 
     <script src="js/app.js"></script>

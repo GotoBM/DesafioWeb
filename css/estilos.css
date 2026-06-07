@@ -227,3 +227,91 @@ body.modo-claro footer {
   margin-bottom: 0;
   white-space: nowrap;
 }
+
+/* ===== SECCIÓN POST ===== */
+#seccion-post {
+  margin-top: 48px;
+  border-top: 2px solid #30363d;
+  padding-top: 32px;
+}
+
+#seccion-post h2 {
+  font-size: 18px;
+  color: var(--acc);
+  margin-bottom: 20px;
+}
+
+.form-post {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 480px;
+}
+
+.form-post input {
+  width: 100%;
+  border-radius: 12px;
+}
+
+#btn-enviar {
+  width: fit-content;
+  margin-bottom: 0;
+}
+
+#post-respuesta {
+  font-size: 14px;
+  color: #52b788;
+  min-height: 20px;
+  font-style: italic;
+}
+
+/* ===== BOTÓN RESEÑA EN HEADER ===== */
+#btn-toggle-resena {
+  background: #6930c3;
+  color: #fff;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+#btn-toggle-resena:hover {
+  background: #5a189a;
+  color: #fff;
+}
+
+/* ===== SECCIÓN POST ===== */
+#seccion-post {
+  margin-top: 48px;
+  border-top: 2px solid #30363d;
+  padding-top: 32px;
+  animation: aparecer 0.3s ease both;
+}
+
+#seccion-post h2 {
+  font-size: 18px;
+  color: var(--acc);
+  margin-bottom: 20px;
+}
+
+.form-post {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 480px;
+}
+
+.form-post input {
+  width: 100%;
+  border-radius: 12px;
+}
+
+#btn-enviar {
+  width: fit-content;
+  margin-bottom: 0;
+}
+
+#post-respuesta {
+  font-size: 14px;
+  color: #52b788;
+  min-height: 20px;
+  font-style: italic;
+}
