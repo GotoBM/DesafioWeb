@@ -9,7 +9,7 @@ async function cargarDatos() {
 
   try {
     // 1. Pedir la lista de los primeros 20 pokémon
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20");
+    const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
 
     // 2. Verificar que la respuesta fue exitosa
     if (!res.ok) throw new Error("Error " + res.status);
@@ -28,7 +28,7 @@ async function cargarDatos() {
       const poke = await resPoke.json();
       const card = crearTarjeta(poke);
       if (card) galeria.appendChild(card);
-    }
+    }S
 
   } catch (error) {
     galeria.innerHTML = "<p>No se pudieron cargar los datos.</p>";
