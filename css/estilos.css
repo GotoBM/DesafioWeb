@@ -127,3 +127,52 @@ input:focus-visible {
     align-items: flex-start;
   }
 }
+/* Animación de entrada */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.tarjeta {
+  animation: aparecer 0.4s ease both;
+}
+body.modo-claro {
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1a202c;
+  --text-muted: #4a5568;
+}
+
+body.modo-claro header {
+  background: #ffffff;
+  border-bottom-color: #e2e8f0;
+}
+
+body.modo-claro footer {
+  background: #ffffff;
+  border-top-color: #e2e8f0;
+}
+/* Botón favorito */
+.btn-fav {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 4px;
+}
+
+.btn-fav:hover {
+  transform: scale(1.3);
+}
+
+.tarjeta.favorito {
+  border: 2px solid #f94144;
+  box-shadow: 0 0 12px rgba(249, 65, 68, 0.4);
+}
